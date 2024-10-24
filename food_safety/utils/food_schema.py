@@ -10,7 +10,7 @@ food_report_schema = {
                     "description": "Name of the food"
                 },
                 "validity": {
-                    "type": "bool",
+                    "type": "boolean",
                     "description": "If the image is a food or not"
                 },
                 "description": {

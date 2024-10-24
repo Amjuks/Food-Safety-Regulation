@@ -14,17 +14,11 @@ openai_client = OpenAI(api_key=os.getenv("KEY"))
 def encode_image(image_path: str) -> str:
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
-  
-def encode_memory_image(image) -> str:
-    file_content = image.read()
-    encoded_string = base64.b64encode(file_content).decode('utf-8')
-    content_type = image.content_type
-    data_url = f"data:{content_type};base64,{encoded_string}"
-
-    return data_url
 
 def analyse_food(image: str) -> dict:
 
+    print(f"{str(image)[:100] = }")
+    
     response = openai_client.chat.completions.create(
         model="gpt-4o-mini-2024-07-18",
         response_format=food_report_schema,

@@ -1,8 +1,11 @@
 :root {
     --background-color: #fff6e7;
+    --primary-color: #208db8;
+    --secondary-color: #013e7c;
+    --form-background: #5b9492;
 }
 
-body {
+.report-body {
     margin: 0px;
     background-color: var(--background-color);
     min-height: 100vh;
@@ -26,6 +29,7 @@ h2 {
 
 .food-image-container{
     display: flex;
+    align-items: center;
     padding: 2rem;
     height: 500px;
 }
@@ -51,6 +55,16 @@ h2 {
     border-left: solid black;
 }
 
-.food-analytics h2 {
+.food-analytics h1 {
+    color: var(--form-background);
+    text-align: center;
     text-decoration: underline;
+}
+
+.food-analytics h2 {
+    color: var(--primary-color);
+}
+
+.food-analytics p {
+    color: var(--secondary-color);
 }

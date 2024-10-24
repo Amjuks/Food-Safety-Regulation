@@ -9,7 +9,7 @@ from django.urls import reverse
 from pprint import pformat, pprint
 
 from .models import AnalysedFood
-from utils.analyse_food import encode_image, encode_memory_image, analyse_food
+from utils.analyse_food import encode_image, analyse_food
 
 class IndexView(View):
 
@@ -39,7 +39,7 @@ class IndexView(View):
             content['error_msg'] = f"{e}"
             traceback.print_exc()
 
-        return JsonResponse(content)
+        return redirect(reverse('food_analyser:analysis', args=[food.id]))
     
 class AnalysisView(View):
 

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const imageInput = document.querySelector('#imageInput');
     const preview = document.getElementById('preview');
+    const uploadBtn = document.querySelector('#uploadBtn');
 
     imageInput.addEventListener('input', () => {
         const file = imageInput.files[0];
@@ -20,4 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     imageInput.dispatchEvent(new Event('input'));
+
+    uploadBtn.addEventListener('click', () => {
+        imageInput.click();
+    });
 })
