@@ -1,0 +1,56 @@
+:root {
+    --background-color: #fff6e7;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--background-color);
+    min-height: 100vh;
+}
+
+h1 {
+    color: rgb(170, 161, 30);
+}
+
+h2 {
+    color: rgb(37, 56, 119);
+}
+
+.report {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+}
+
+.food-image-container{
+    display: flex;
+    padding: 2rem;
+    height: 500px;
+}
+
+.image-container {
+    display: flex;
+
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.food-image {
+    height: inherit;
+    object-fit: cover;
+}
+
+.food-analytics {
+    max-width: 50%;
+    padding-left: 2rem;
+    border-left: solid black;
+}
+
+.food-analytics h2 {
+    text-decoration: underline;
+}

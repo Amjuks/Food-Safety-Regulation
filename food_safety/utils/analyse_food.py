@@ -1,18 +1,27 @@
 import os
 import base64
+import json
+
 from openai import OpenAI
 from dotenv import load_dotenv
 
-from utils import food_report_schema
+from utils.food_schema import food_report_schema
 
 load_dotenv()
 
 openai_client = OpenAI(api_key=os.getenv("KEY"))
 
 def encode_image(image_path: str) -> str:
-  with open(image_path, "rb") as image_file:
-    return base64.b64encode(image_file.read()).decode('utf-8')
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
   
+def encode_memory_image(image) -> str:
+    file_content = image.read()
+    encoded_string = base64.b64encode(file_content).decode('utf-8')
+    content_type = image.content_type
+    data_url = f"data:{content_type};base64,{encoded_string}"
+
+    return data_url
 
 def analyse_food(image: str) -> dict:
 
@@ -25,12 +34,12 @@ def analyse_food(image: str) -> dict:
                 "content": [
                     {
                         "type": "text",
-                        "text": "What do you see here?"
+                        "text": "Give a safety report on the food you see."
                     },
                     {
                         "type": "image_url",
                         "image_url": {
-                            "url": f"data:image/png;base64,{image}"
+                            "url": f"{image}"
                         }
                     }
                 ]
@@ -38,13 +47,8 @@ def analyse_food(image: str) -> dict:
         ]
     )
 
-    print(response)
+    print(f"{response = }")
 
-    report = response.choices[0].message.content
-    print(f"{type(report) = }")
+    report = json.loads(response.choices[0].message.content)
 
-    if type(report) == str:
-       print("converting to dict")
-       report = dict(report)
-       
     return report
