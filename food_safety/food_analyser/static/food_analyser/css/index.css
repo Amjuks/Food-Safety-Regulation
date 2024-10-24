@@ -24,6 +24,7 @@ footer h2 {
 main {
     display: flex;
     justify-content: center;
+    gap: 1rem;
 }
 
 .analyse-form {

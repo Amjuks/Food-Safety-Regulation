@@ -9,7 +9,7 @@ from utils.food_schema import food_report_schema
 
 load_dotenv()
 
-openai_client = OpenAI(api_key=os.getenv("KEY"))
+openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def encode_image(image_path: str) -> str:
     with open(image_path, "rb") as image_file:
@@ -18,7 +18,7 @@ def encode_image(image_path: str) -> str:
 def analyse_food(image: str) -> dict:
 
     print(f"{str(image)[:100] = }")
-    
+
     response = openai_client.chat.completions.create(
         model="gpt-4o-mini-2024-07-18",
         response_format=food_report_schema,

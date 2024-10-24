@@ -15,6 +15,8 @@
                 <div class="image-container">
                     <img class="food-image" src="{{ food.image.url }}" alt="Food Image">
                 </div>
+
+                <a class="btn btn-primary" href="{% url 'food_analyser:index' %}">Analyse another food?</a>
             </div>
             <div class="food-analytics">
                 <h1>{{ food.report.name }}</h1>
